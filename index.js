@@ -56,3 +56,15 @@ server.route({
     })
   }
 });
+
+server.route({
+  method: 'GET',
+  path: '/users/{username}',
+  handler: function (request, reply) {
+    const username = request.params.username;
+    const query = 'SELECT * FROM weev.users where username=${username}';
+    db.query(query).then(data => {
+      reply(data)
+    })
+  }
+});
