@@ -46,3 +46,13 @@ server.route({
     })
   }
 });
+
+server.route({
+  method: 'GET',
+  path: '/users',
+  handler: function (request, reply) {
+    db.query('SELECT * FROM weev.users').then(data => {
+      reply(data)
+    })
+  }
+});
