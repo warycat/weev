@@ -6,7 +6,7 @@ const path = require('path')
 
 const PG_URL = process.env.PG_URL || env.PG_URL
 const db = pgp(PG_URL)
-const sqlPath = path.join(__dirname, '../sql/weev.sql')
+const sqlPath = path.join(__dirname, './sql/weev.sql')
 const sql = fs.readFileSync(sqlPath, 'utf8')
 const spawn = require('child_process').spawn
 
@@ -24,7 +24,6 @@ psql.on('close', (code) => {
   console.log(`psql exited with code ${code}`)
 })
 
-const Hapi = require('hapi')
 const PORT = process.env.PORT || 3000
 const express = require('express')
 const server = express()
@@ -35,7 +34,7 @@ server.listen(PORT, () => {
 })
 
 server.get('/', (req, res) => {
-  db.query('SELECT * FROM weev.users').then(data => {
+  db.query('SELECT * FROM pg_tables').then(data => {
     res.send(data)
   })
 })
