@@ -6,11 +6,11 @@ const path = require('path')
 
 const PG_URL = process.env.PG_URL || env.PG_URL
 const db = pgp(PG_URL)
-const sqlPath = path.join(__dirname, 'weev.sql')
+const sqlPath = path.join(__dirname, '../sql/weev.sql')
 const sql = fs.readFileSync(sqlPath, 'utf8')
 const spawn = require('child_process').spawn
 
-const psql = spawn('psql', ['-f', '../sql/weev.sql', PG_URL])
+const psql = spawn('psql', ['-f', sql, PG_URL])
 
 psql.stdout.on('data', (data) => {
   console.log(`${data}`)
