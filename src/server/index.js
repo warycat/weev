@@ -10,7 +10,7 @@ const sqlPath = path.join(__dirname, 'weev.sql')
 const sql = fs.readFileSync(sqlPath, 'utf8')
 const spawn = require('child_process').spawn
 
-const psql = spawn('psql', ['-f', 'weev.sql', PG_URL])
+const psql = spawn('psql', ['-f', '../sql/weev.sql', PG_URL])
 
 psql.stdout.on('data', (data) => {
   console.log(`${data}`)
