@@ -4,7 +4,7 @@ import pjson from '../../package.json'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   res.send(await db.query('SELECT * FROM pg_tables'))
 })
 
