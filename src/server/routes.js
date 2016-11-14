@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/version', (req, res) => {
-  res.json(pjson)
+  res.send(pjson.version)
 })
 
 router.get('/users', (req, res) => {
